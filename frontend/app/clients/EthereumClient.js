@@ -4,7 +4,13 @@ import bigRat from 'big-rational';
 var fixtures = require("../js/fixtures");
 var abi = require("../js/abi");
 var Web3 = require('web3');
-var web3 = new Web3();
+
+if (typeof web3 !== 'undefined') {
+  web3 = new Web3(web3.currentProvider);
+} else {
+  // set the provider you want from Web3.providers
+  var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+}
 
 var EthereumClient = function(params) {
   try {
@@ -138,19 +144,23 @@ var EthereumClient = function(params) {
   };
 
   this.getString = function(db, key) {
-    return web3.db.getString(db, key);
+    // TODO
+    // return web3.db.getString(db, key);
   };
 
   this.putString = function(db, key, value) {
-    web3.db.putString(db, key, value);
+    // TODO
+    // web3.db.putString(db, key, value);
   };
 
   this.getHex = function(db, key) {
-    return web3.db.getHex(db, key);
+    // TODO
+    // return web3.db.getHex(db, key);
   };
 
   this.putHex = function(db, key, value) {
-    web3.db.putHex(db, key, value);
+    // TODO
+    // web3.db.putHex(db, key, value);
   };
 
   this.getClient = function(callback) {
